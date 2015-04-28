@@ -2,6 +2,10 @@ require 'rspec'
 require 'task'
 
 describe(Task) do
+  before() do
+    Task.clear()
+  end
+
   describe("#description") do
     it("lets you give a describtion") do
       test_task = Task.new("scrub the zebra")
@@ -14,7 +18,7 @@ describe(Task) do
       expect(Task.all()).to(eq([]))
     end
   end
-
+  
   describe("#save") do
     it("adds a task to the array of saved tasks") do
       test_task = Task.new("wash the lion")
