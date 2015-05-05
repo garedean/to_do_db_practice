@@ -5,16 +5,30 @@ Capybara.app = Sinatra::Application
 set(:show_exceptions, false)
 
 describe('the home page path', type: :feature) do
-  it('will have link to create a new list') do
+  # it('will have link to create a new list') do
+  #   visit('/')
+  #   click_link('Create a new task list')
+  #   expect(page).to have_content('Create a new task list!')
+  # end
+  #
+  # it('will have a link to view all of my lists') do
+  #   visit('/')
+  #   click_link('See all current task lists')
+  #   expect(page).to have_content('Here is your current task lists!')
+  # end
+  #
+  it('allows new lists to be created on the page') do
     visit('/')
-    click_link('Create a new task list')
-    expect(page).to have_content('Create a new task list!')
+    fill_in('name', with: "Totally new list")
+    click_button('Send')
+    expect(page).to have_content('Totally new list')
   end
 
-  it('will have a link to view all of my lists') do
+  it('shows all lists') do
+    list = List.new(name: 'List 1', id: nil)
+    list.save
     visit('/')
-    click_link('See all current task lists')
-    expect(page).to have_content('Here is your current task lists!')
+    expect(page).to have_content('List 1')
   end
 end
 

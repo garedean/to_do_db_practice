@@ -1,0 +1,17 @@
+<h1 class="text-center"><%= @list.name %></h1>
+
+<ul>
+  <% @list.tasks().each() do |task|   %>
+    <li><%= task.description()%></li>
+  <% end %>
+</ul>
+
+
+<form action="/tasks" method="post">
+  <div class="form-group">
+    <input type="hidden" name="list_id" value="<%= @list.id %>">
+    <label for="description">New task:</label>
+    <input type="text" id="description" name="description" class="form-control">
+  </div>
+  <button type="submit" class="btn btn-primary" name="list_submit">Send</button>
+</form>

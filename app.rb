@@ -35,7 +35,7 @@ post('/lists') do
   list = List.new(name: name, id: nil)
   list.save()
 
-  erb(:success)
+  redirect to ('/lists')
 end
 
 post("/tasks") do
