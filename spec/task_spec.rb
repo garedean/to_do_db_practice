@@ -38,5 +38,5 @@ describe(Task) do
       expect(test_task.description()).to(eq("blah blah"))
     end
   end
-  
+
 end

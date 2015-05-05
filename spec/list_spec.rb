@@ -39,4 +39,21 @@ describe(List) do
     end
   end
 
+  describe(".find") do
+    it("returns a list object when an id is used as argument") do
+      list1 = List.new(name: "epicodus stuff", id: nil)
+      list1.save
+      expect(List.find(list1.id)).to(eq(list1))
+    end
+  end
+
+  describe('#tasks') do
+    it('returns any tasks that are in current task list') do
+      list1 = List.new(name: "epicodus stuff", id: nil)
+      list1.save()
+      task1 = Task.new(description: "code review friday", list_id: list1.id)
+      task1.save()
+      expect(list1.tasks()).to(eq([task1]))
+    end
+  end
 end

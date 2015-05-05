@@ -27,5 +27,23 @@ class List
     self.name().==(another_list.name()).&(self.id().==(another_list.id()))
   end
 
+  def self.find(target_id)
+    list_match = nil
 
+    all.each do |list|
+      list_match = list if list.id == target_id
+    end
+    list_match
+  end
+
+  def tasks
+    tasks = []
+    returned_tasks = DB.exec("SELECT * FROM tasks WHERE list_id = #{@id};")
+    returned_tasks.each do |task|
+      description = task['description']
+      list_id     = task['list_id'].to_i
+      tasks << Task.new(description: description, list_id: list_id)
+    end
+    tasks
+  end
 end
