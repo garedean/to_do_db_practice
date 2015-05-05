@@ -1,24 +1,28 @@
-<h1>To Do</h1>
+<style>
+.col-md-6 {
+  float:left;
+}
+</style>
 
-<p>
-  Here are all your tasks:
+<h1 class="text-center">Welcome to build your own task list!</h1>
+
+
+<p class="lead text-center">
+  From here you can choose to create a new task list or see all current task lists you are working on.
+
 </p>
 
-<ul>
-  <% @tasks.each() do |task| %>
-  <li><%= task.description() %></li>
-  <% end %>
-</ul>
-
-<p>
-  Create a new task:
-</p>
-
-<form action="/tasks" method="post">
+<div class="col-md-6">
+<a href="/lists/new">Create a new task list</a>
+</div>
+<div class="col-md-6">
+<a href="/lists">See all current task lists</a>
+</div>
+<!-- <form action="/tasks" method="post">
   <div class="form-group">
     <label for="description">Task Description</label>
     <input type="text" name="description" id="description" class="form-control">
     <br>
     <button id="submit_tasks" type="submit" class="btn-primary">Add Task</button>
   </div>
-</form>
+</form> -->
